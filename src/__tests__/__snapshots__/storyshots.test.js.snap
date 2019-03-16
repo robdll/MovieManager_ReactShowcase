@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots About to be loaded 1`] = `null`;
+
+exports[`Storyshots About with 2 contributors 1`] = `
+<div
+  className="about"
+>
+  <h2>
+    Contributors:
+  </h2>
+  <div>
+    <div
+      className="contributor"
+    >
+      <img
+        alt=""
+        src="https://avatars3.githubusercontent.com/u/2461921?v=3"
+      />
+      <div>
+        <a
+          href="https://github.com/gvaldambrini"
+        >
+          gvaldambrini
+        </a>
+        <div
+          className="commits"
+        >
+          10 commits
+        </div>
+      </div>
+    </div>
+    <div
+      className="contributor"
+    >
+      <img
+        alt=""
+        src="https://avatars1.githubusercontent.com/u/425276?v=3"
+      />
+      <div>
+        <a
+          href="https://github.com/rugginoso"
+        >
+          rugginoso
+        </a>
+        <div
+          className="commits"
+        >
+          1 commit
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots App about 1`] = `
+<div>
+  <ul>
+    <li>
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a
+        href="/about"
+        onClick={[Function]}
+      >
+        About
+      </a>
+    </li>
+  </ul>
+  <hr />
+  <div
+    className="about"
+  >
+    <h2>
+      Contributors:
+    </h2>
+    <div>
+      <div
+        className="contributor"
+      >
+        <img
+          alt=""
+          src="https://avatars3.githubusercontent.com/u/2461921?v=3"
+        />
+        <div>
+          <a
+            href="https://github.com/gvaldambrini"
+          >
+            gvaldambrini
+          </a>
+          <div
+            className="commits"
+          >
+            10 commits
+          </div>
+        </div>
+      </div>
+      <div
+        className="contributor"
+      >
+        <img
+          alt=""
+          src="https://avatars1.githubusercontent.com/u/425276?v=3"
+        />
+        <div>
+          <a
+            href="https://github.com/rugginoso"
+          >
+            rugginoso
+          </a>
+          <div
+            className="commits"
+          >
+            1 commit
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots App home 1`] = `
+<div>
+  <ul>
+    <li>
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a
+        href="/about"
+        onClick={[Function]}
+      >
+        About
+      </a>
+    </li>
+  </ul>
+  <hr />
+  <div
+    className="home"
+  >
+    <h2>
+      Home
+    </h2>
+    <p>
+      Counter: 
+      10
+    </p>
+    <button
+      onClick={[Function]}
+    >
+      Increment
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Home with counter 1`] = `
+<div
+  className="home"
+>
+  <h2>
+    Home
+  </h2>
+  <p>
+    Counter: 
+    10
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Increment
+  </button>
+</div>
+`;
