@@ -3,7 +3,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import About from "./About";
+import About from "./about-component";
 
 storiesOf("About", module)
   .add("to be loaded", () => (

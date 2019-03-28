@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { Link } from "react-router-dom";
 
-import "./App.scss";
+import "./app.scss";
 
 const App = props => (
   <div>

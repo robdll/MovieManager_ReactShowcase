@@ -7,7 +7,7 @@ import reducer, {
   getContributors,
   contributorsLoaded,
   testing
-} from "./about";
+} from "./about-module";
 
 const mockStore = configureMockStore([thunk]);
 

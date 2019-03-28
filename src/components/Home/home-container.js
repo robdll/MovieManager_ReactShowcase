@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import { increment, getCounter } from "../modules/counter";
+import { increment, getCounter } from "../../modules/counter";
 
-import Home from "../components/Home";
+import Home from "./home-component";
 
 const mapDispatchToProps = {
   increment: () => increment(1)

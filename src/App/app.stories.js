@@ -5,9 +5,9 @@ import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 
 import StoryRouter from "storybook-react-router";
-import About from "../About";
-import App from "./App";
-import Home from "../Home";
+import About from "../About/about-component";
+import Home from "../Home/home-component";
+import App from "./App/app-component";
 
 storiesOf("App", module)
   .addDecorator(StoryRouter({ "/about": linkTo("App", "about") }))

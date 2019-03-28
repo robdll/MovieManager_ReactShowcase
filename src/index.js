@@ -9,9 +9,10 @@ import thunkMiddleware from "redux-thunk";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import rootReducer from "./modules";
-import App from "./components/App";
-import Home from "./containers/Home";
-import About from "./containers/About";
+
+import App from "./App/app-component";
+import Home from "./components/Home/home-container";
+import About from "./components/About/about-container";
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 

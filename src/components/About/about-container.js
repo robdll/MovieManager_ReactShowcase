@@ -3,9 +3,9 @@ import {
   fetchContributors,
   getContributors,
   contributorsLoaded
-} from "../modules/about";
+} from "./about-module";
 
-import About from "../components/About";
+import About from "./about-component";
 
 const mapDispatchToProps = {
   fetchContributors

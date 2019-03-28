@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import styles from "./About.module.scss";
+import styles from "./about.module.scss";
 
 class About extends Component {
   componentDidMount() {
