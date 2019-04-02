@@ -1,47 +1,99 @@
-import React, { Component } from "react";
+/* React imports */
+import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./about.module.scss";
+/* Reusable components */
+import MovieCard from "../MovieCard/movie-card-component";
+import Eye from "../Eye/eye-component";
 
-class About extends Component {
-  componentDidMount() {
-    if (!this.props.loaded) {
-      this.props.fetchContributors();
-    }
-  }
+/* Children components */
 
-  render() {
-    if (!this.props.loaded) {
-      return null;
-    }
+/* Style */
+import style from "./about.module.scss";
 
-    const contributors = this.props.contributors.map(el => (
-      <div key={el.username} className={styles.contributor}>
-        <img src={el.avatar} alt="" />
-        <div>
-          <a href={el.url}>{el.username}</a>
-          <div className={styles.commits}>
-            {el.contributions > 1
-              ? `${el.contributions} commits`
-              : `${el.contributions} commit`}
-          </div>
+/* Component implementation */
+const About = function(props) {
+  const card = <MovieCard movie={props.movie} />;
+
+  const titleYear = (
+    <h2>
+      {props.movie.title}
+      {` (${props.movie.year})`}
+    </h2>
+  );
+  const movieDescription = <p>{props.movie.description}</p>;
+  const castTitle = <h3 className={style.h3}>Cast</h3>;
+  const actors = (
+    <div className={style.actorsContainer}>
+      {props.movie.actors.map((i, idx) => (
+        <div key={idx}>
+          <img
+            className={style.actorImage}
+            alt="actor image"
+            src={i.url || "/img/actor.jpg"}
+          />
+          <p className={style.actorName}>actor name</p>
         </div>
-      </div>
-    ));
+      ))}
+    </div>
+  );
+  const director = (
+    <h3 className={style.h3}>
+      {" "}
+      Director:
+      <span className={style.span}> {props.movie.director} </span>
+    </h3>
+  );
 
-    return (
-      <div className={styles.about}>
-        <h2>Contributors:</h2>
-        <div>{contributors}</div>
-      </div>
-    );
-  }
-}
+  const thumbs = {
+    up: { url: "./svg/thumb_up.svg", alt: "Thumbs down" },
+    down: { url: "./svg/thumb_down.svg", alt: "Thumbs up" }
+  };
+
+  const eyes = (
+    <div className={style.eyeContainer}>
+      <Eye seen />
+      <Eye />
+    </div>
+  );
+
+  return (
+    <section className={style.article}>
+      <article>{card}</article>
+
+      <article className={style.movieInfoContainer}>
+        {titleYear}
+        {movieDescription}
+        {castTitle}
+        {actors}
+        {director}
+      </article>
+
+      <article className={style.actionsContainer}>
+        <div className={style.ratingContainer}>
+          <p className={style.ratingItem1}>Rating</p>
+          <p className={style.ratingItem2}>4</p>
+          <p className={style.ratingItem3}>/5</p>
+          <img
+            className={style.thumbsIcon}
+            alt={thumbs.up.alt}
+            src={thumbs.up.url}
+          />
+          <img
+            className={style.thumbsIcon}
+            alt={thumbs.down.alt}
+            src={thumbs.down.url}
+          />
+        </div>
+
+        {eyes}
+      </article>
+    </section>
+  );
+};
 
 About.propTypes = {
-  fetchContributors: PropTypes.func.isRequired,
-  contributors: PropTypes.array.isRequired,
-  loaded: PropTypes.bool.isRequired
+  movie: PropTypes.object
 };
 
 export default About;
