@@ -13,6 +13,7 @@ import style from "./about.module.scss";
 
 /* Component implementation */
 const About = function(props) {
+  console.log(props)
   const card = <MovieCard movie={props.movie} />;
 
   const titleYear = (
@@ -25,11 +26,11 @@ const About = function(props) {
   const castTitle = <h3 className={style.h3}>Cast</h3>;
   const actors = (
     <div className={style.actorsContainer}>
-      {props.movie.actors.map((i, idx) => (
+      {(props.movie.actors || []).map((i, idx) => (
         <div key={idx}>
           <img
             className={style.actorImage}
-            alt="actor image"
+            alt={`${idx} actor`}
             src={i.url || "/img/actor.jpg"}
           />
           <p className={style.actorName}>actor name</p>

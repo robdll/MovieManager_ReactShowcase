@@ -2,38 +2,30 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-On the top of CRA, it adds:
- - sass & (S)CSS modules
- - redux & redux-thunk
- - react-router
- - prettier & eslint
- - Storybook
-
- The filesystem structure follows the [redux ducks proposal](https://github.com/erikras/ducks-modular-redux).
-
-
-# Prerequisites
+# Requirements
 
 - [Node](https://nodejs.org/en/download/)
-- [Npm](https://www.npmjs.com/)
 - [Yarn](https://yarnpkg.com/en/)
 
-# Configuration
+
+# Front end configuration
 
 1. Clone the repository:
 
 ```
-git clone git@github.com:Elaisian1/Elaisian.git
+git clone git@github.com:koop4/Movie-Manager-Showcase.git
 ```
 
 2. Install dependencies
 
 ```
-cd ./<repository-name>
+cd ./Movie-Manager-Showcase
 yarn
 ```
 
-# Run
+# Run 
+
+## Front End
 
 - To run the application
 
@@ -41,12 +33,18 @@ yarn
 yarn
 ```
 
+Open your browser and go to http://localhost:3000/
+
+
+## Storybook
 
 - To run storybook
 
 ```
 yarn storybook
 ```
+
+Open your browser and go to http://localhost:9009
 
 
 # Build
@@ -64,3 +62,19 @@ yarn build
 ```
 yarn build-storybook
 ```
+
+# API references
+
+This application currently uses [The Movie db API](https://developers.themoviedb.org/3)
+
+## TODOs
+
+- [X] mockup
+- [x] movie db data fetch
+- [ ] authentication
+- [X] redux
+- [ ] carousel
+- [ ] develer back end link
+- [ ] personal back end hosting
+- [ ] Storybook 
+- [ ] Fork unlink

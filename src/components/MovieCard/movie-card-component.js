@@ -16,7 +16,7 @@ const MovieCard = function(props) {
       <div style={background} className={style.movieCard}>
         <img className={style.spacer} src={spacerImg} alt={props.movie.title} />
       </div>
-    </>
+    </> 
   );
 };
 

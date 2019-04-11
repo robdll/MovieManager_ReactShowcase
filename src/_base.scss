@@ -1,5 +1,12 @@
-@import "../node_modules/normalize.css/normalize.css";
+// @import "../node_modules/normalize.css/normalize.css";
+
+
 
 * {
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html, body {
+    margin: 0px;
 }

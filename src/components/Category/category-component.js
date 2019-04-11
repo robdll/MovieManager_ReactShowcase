@@ -13,17 +13,19 @@ import style from "./category.module.scss";
 
 /* Component implementation */
 const Category = function(props) {
+
+  const categoryName = props.status.name;
+  const isSeen = categoryName !== 'da vedere';
   const header = (
-    <header className={style.header}>
-      <span className={style.headerSpan} />
-      {props.categoryName}
+    <header className={`${style.header} ${isSeen ? style.seenHeader : ''}`}>
+      <span className={`${style.headerSpan} ${isSeen ? style.seenSpan : ''}`} />
+      {categoryName}
     </header>
   );
 
-  // TODO mock > localStorage > state
-  const movies = props.movies.map((movie, idx) => {
-    return (
-      <div className={style.movieContainer} key={idx}>
+  const movies = props.status.list.map((movie, idx) => {
+    return (  
+      <div className={style.movieContainer} key={idx} onClick={()=> props.actions.movieSelection({movie, categoryName} )} >
         <MovieCard movie={movie} />
       </div>
     );
@@ -42,13 +44,13 @@ const Category = function(props) {
     }
   };
 
-  let about = "";
-  if (props.selected) {
-    about = (
-      <div className={style.about}>
-        <About movie={props.selected} />
-      </div>
-    );
+  let about;
+
+
+  if (props.status.selection && categoryName === props.status.selection.category) {
+    about = <div className={style.about}>
+        <About movie={props.status.selection} />
+      </div>;
   }
   const leftArrow = (
     <img
