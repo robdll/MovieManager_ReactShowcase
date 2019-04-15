@@ -1,19 +1,11 @@
 @import "../base";
 
-.header {
+.navbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 0 2%;
-}
-
-.headerImg{
-  align-self: center;
-  height: 20px;
-}
-
-section {
-  height: 100%;
+  position: relative;
 }
 
 .main {

@@ -3,6 +3,7 @@ import React from "react";
 
 /** Children components */
 import Search from "./Search/search-component";
+import Auth from "../store/containers/auth-container";
 
 /** Reusable components */
 // TODO find a way to use path from src. see:  https://stackoverflow.com/questions/44063592/react-import-root-path-helper
@@ -22,7 +23,7 @@ const App = (props) => {
     clearSearch: props.searchClear
   }
 
-  const search = <Search status={props.search} actions={searchActions}/>
+  const search = props.auth && <Search status={props.search} actions={searchActions}/>
 
   const categoryActions = {
     addToSeen: props.addToSeen,
@@ -52,14 +53,16 @@ const App = (props) => {
     seenCategories = <Category status={status} actions={categoryActions} />;
   }
 
+  const navbar = <nav className={style.navbar}>
+      <Logo />
+      <Auth />
+    </nav>;
+
   return (
     <>
       <div className={style.backImg} />
 
-      <header className={style.header}>
-        <Logo />
-        <img className={style.headerImg} alt={`User icon`} src={`${process.env.PUBLIC_URL}/svg/user_icon.svg`} />
-      </header>
+      {navbar}
 
       {search}
       
@@ -73,12 +76,6 @@ const App = (props) => {
     </>
   );
 }
-
-
-// App.propTypes = {
-//   isSearching: PropTypes.bool.isRequired,
-//   suggestions: PropTypes.array.isRequired
-// };
 
 
 export default App;

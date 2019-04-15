@@ -1,0 +1,167 @@
+.authContainer {
+    align-self: center;
+    position: relative;
+}
+  
+
+.userIcon {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+  
+.logoutMenu {
+    overflow: hidden;
+    position: absolute;
+    max-height: 0px;
+    min-width: 100px;
+    right: 0px;
+    top: 100%;
+    background: #fff;
+    border-radius: 3px;
+    transition: max-height .4s ease-out;
+    padding: 0px;
+    margin: 0px;
+    li {
+        padding: 10px;
+        list-style: none;
+        display: flex;
+    }
+
+    button {
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0px;
+        line-height: 1.5;
+        font-size: 1rem;
+    }
+    
+}
+
+
+.logoutErr {
+    animation: redAlert .8s linear 3;
+}
+
+.userIcon:hover +.logoutMenu{
+    max-height: 100px;
+}
+
+.logoutMenu:hover, .logoutMenu:focus-within {
+    max-height: 100px;
+    background: #ddd;
+}
+
+
+  
+.userIcon:focus +.logoutMenu {
+    max-height: 100px;
+}
+
+.loginModal::before {
+    position: fixed;
+    content: "";
+    top: 0;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.loginModal {
+    position: fixed;
+    top: 0;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    z-index: 5;
+    padding: 50px;
+    background: #fff;
+    border-radius: 3px;
+    display: grid;
+    grid-template: .7fr 1fr 1fr 1fr / 1fr 1fr;
+    grid-gap: 30px;
+    min-width: 300px;
+    box-sizing: content-box;
+    
+    span {
+        grid-column: 1 / -1;
+        text-align: center;
+        color: #333;
+        font-weight: 700;
+    }
+
+    input {
+        display: block;
+        grid-column: 1 / -1;
+        line-height: 1.7rem;
+        text-indent: 10px;
+        border-radius: inherit;
+        border: none;
+        background: #f0f0f0;
+    }
+
+    button {
+        border: 2px solid gray;
+        background: white;
+        border-radius: 50px;
+    }
+
+    button:hover {
+        cursor: pointer;
+        border: 2px solid green;
+        box-shadow: 0px 0px 4px lightgreen;
+    }
+
+}
+
+.error {
+    border:2px solid red;
+    background: #e25454;
+    border-radius: 3px;
+    grid-column: 1 / -1;
+    padding: 2px 15px;
+    color: white;
+    align-self: center;
+    justify-self: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+    user-select: none;
+}
+
+.spinner {
+    grid-column: 1 / -1;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-right: 2px solid #555;
+    align-self: center;
+    justify-self: center;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes redAlert {
+    0% {background-color: #fff;}
+    50% {background-color: red; }
+    100% {background-color: #fff;}
+}

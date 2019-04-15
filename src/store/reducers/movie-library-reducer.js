@@ -9,14 +9,13 @@ import {
 } from "../actions/movie-actions";
 
 const initialState = {
-    search: {
-      isSearching: false,
-      fetched: []
-    },
-    userMovies: [],
-    movieSelected: undefined
+  search: {
+    isSearching: false,
+    fetched: []
+  },
+  userMovies: [],
+  movieSelected: undefined
 };
-
 
 export default function reducer(state = initialState, action = {}) {
 
