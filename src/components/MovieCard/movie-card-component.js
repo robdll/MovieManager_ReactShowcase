@@ -10,10 +10,11 @@ const MovieCard = function(props) {
   const background = {
     backgroundImage: `url(${props.movie.url})`
   };
+
   const spacerImg = "./img/movie-spacer.png";
   return (
     <>
-      <div style={background} className={style.movieCard}>
+      <div style={background} className={`${style.movieCard} ${props.movie.isFetchinCover ? style.fetching : ''}`}>
         <img className={style.spacer} src={spacerImg} alt={props.movie.title} />
       </div>
     </> 

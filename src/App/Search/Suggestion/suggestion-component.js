@@ -21,7 +21,7 @@ const Suggestion = function(props) {
     </div>;
 
   const year = movie.year ? `(${movie.year})` : "";
-  const { addToSeen: seenListAction, addToWatch: watchListAction } = props.actions;
+  const { addToLibrary } = props.actions;
 
   return (
     <article className={style.suggestion}>
@@ -29,8 +29,8 @@ const Suggestion = function(props) {
       <p className={style.title}>
         {movie.title} <span>{year}</span>
       </p>
-      <div className={`${style.icon} ${style.unseen}`}> <Eye action={watchListAction} movie={movie} /> </div>
-      <div className={`${style.icon} ${style.seen}`}> <Eye seen action={seenListAction} movie={movie} /> </div>
+      <div className={`${style.icon} ${style.unseen}`}> <Eye action={addToLibrary} movie={ { movie_id: props.movie.id, watched: false } } /> </div>
+      <div className={`${style.icon} ${style.seen}`}> <Eye seen action={addToLibrary} movie={ { movie_id: props.movie.id, watched: true } } /> </div>
     </article>
   );
 };

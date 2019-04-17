@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 
 import { searchMovies } from "../effects/search-effect";
+import { getAllMovies, addToLibrary } from "../effects/movie-effect";
+
 import { 
-  addToWatch, 
-  addToSeen, 
   movieSelection,
   movieSelectionClear
 } from "../actions/movie-actions";
@@ -13,20 +13,19 @@ import { getFetched, getIsSearching } from "../selectors/search-selectors";
 import { isLoggedIn } from "../selectors/auth-selectors";
 
 import { 
-  getWatchList,
-  getSeenList,
+  getMovieList,
   getMovieSelected
 } from "../selectors/movie-selectors";
 
 import App from "../../App/app-component";
 
 const mapDispatchToProps = {
+  getAllMovies,
   searchMovies,
-  addToWatch,
-  addToSeen,
   searchClear,
+  addToLibrary,
   movieSelection,
-  movieSelectionClear
+  movieSelectionClear,
 };
 
 const mapStateToProps = ({movieLibrary: state, auth }) => {
@@ -37,8 +36,7 @@ const mapStateToProps = ({movieLibrary: state, auth }) => {
       isSearching: getIsSearching(state),
     },
     category: {
-      seenList: getSeenList(state),
-      watchList: getWatchList(state),
+      userMovies: getMovieList(state),
       selection: getMovieSelected(state)
     },
     auth: isLoggedIn(auth)

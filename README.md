@@ -71,10 +71,14 @@ This application currently uses [The Movie db API](https://developers.themoviedb
 
 - [X] mockup
 - [x] movie db data fetch
-- [ ] authentication
+- [X] authentication
 - [X] redux
-- [ ] carousel
-- [ ] develer back end link
-- [ ] personal back end hosting
+- [X] carousel
+- [X] develer back end link
+- [X] personal back end hosting
+- [ ] movie detail api
+- [ ] like/dislike api
+- [ ] remove movie api
+- [ ] css repsonsiveness
 - [ ] Storybook 
-- [ ] Fork unlink
+- [ ] repository Fork unlink

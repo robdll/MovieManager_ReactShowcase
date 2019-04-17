@@ -1,9 +1,9 @@
 import { SEARCH, SEARCH_SUCCESS, SEARCH_FAILURE, SEARCH_CLEAR } from "../actions/search-actions";
 import { 
-  MOVIE_ADD_TO_SEEN, 
-  MOVIE_ADD_TO_WATCH, 
+  MOVIE_GET_ALL, MOVIE_GET_ALL_SUCCESS, MOVIE_GET_ALL_FAILURE, 
+  MOVIE_ADD_TO_WATCH, MOVIE_ADD_TO_WATCH_SUCCESS, MOVIE_ADD_TO_WATCH_FAILURE,
+  MOVIE_FETCH_COVERS_START, MOVIE_FETCH_COVERS_SUCCESS, MOVIE_FETCH_COVERS_FAILURE,
   MOVIE_REMOVE_TO_WATCH, 
-  MOVIE_REMOVE_TO_SEEN,
   MOVIE_SELECTION,
   MOVIE_SELECTION_CLEAR,
 } from "../actions/movie-actions";
@@ -13,8 +13,9 @@ const initialState = {
     isSearching: false,
     fetched: []
   },
+  movieSelected: undefined,
+  isFetching: false,
   userMovies: [],
-  movieSelected: undefined
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -25,6 +26,51 @@ export default function reducer(state = initialState, action = {}) {
     const newState = { ...state };
 
     switch (action.type) {
+      case MOVIE_FETCH_COVERS_START: {
+        newState.userMovies = newState.userMovies.map( movie => ({ ...movie, isFetchinCover: true}));
+        return newState;
+      }
+      case MOVIE_FETCH_COVERS_SUCCESS: {
+        newState.userMovies = newState.userMovies.map(movie => {
+          movie.isFetchinCover = false;
+          movie.url = movie.url || action.payload.find( payload => movie.movie_id === payload.id).cover;
+          return movie;
+        });
+        return newState;
+      }
+      case MOVIE_FETCH_COVERS_FAILURE: {
+        newState.userMovies = newState.userMovies.map( movie => {
+          movie.isFetchinCover = false;
+          movie.url = movie.url || './img/not_available.jpeg';
+          return movie;
+        });
+        return newState;
+      }
+      case MOVIE_ADD_TO_WATCH: {
+        newState.userMovies.push(action.payload);
+        return newState;
+      }
+      case MOVIE_ADD_TO_WATCH_SUCCESS: {
+        return newState;
+      }
+      case MOVIE_ADD_TO_WATCH_FAILURE: {
+        newState.userMovies = newState.userMovies.filter( i => i.movie_id === action.payload.movie_id);
+        return newState;
+      }
+      case MOVIE_GET_ALL: {
+        newState.isFetching = true;
+        return newState;
+      }
+      case MOVIE_GET_ALL_SUCCESS: {
+        newState.isFetching = false;
+        newState.userMovies = action.payload;
+        return newState;
+      }
+      case MOVIE_GET_ALL_FAILURE: {
+        newState.isFetching = false;
+        newState.userMovies = [];
+        return newState;
+      }
       case SEARCH: {
         newState.search.isSearching = true;
         return newState;
@@ -40,41 +86,19 @@ export default function reducer(state = initialState, action = {}) {
         newState.search.fetched = [];
         return newState;
       }
-      case MOVIE_ADD_TO_SEEN: {
-        const newState = { ...state };
-        const alreadyInList = newState.userMovies.find( movie => {
-          return movie.id === action.payload.id
-        });
-        if(alreadyInList) {
-          alreadyInList.seen = true;
-        } else {
-          action.payload.seen = true;
-          newState.userMovies.push(action.payload)
-        }
-        return newState;
-      }
-      case MOVIE_REMOVE_TO_SEEN: {
-        const newState = { ...state };
-        newState.userMovies.forEach( movie => {
-          if(movie.title === action.payload.title) {
-            movie.toWatch = false;
-          }
-        });
-        return newState;
-      }
-      case MOVIE_ADD_TO_WATCH: {
-        const newState = { ...state };
-        const alreadyInList = newState.userMovies.find( movie => {
-          return movie.id === action.payload.id
-        });
-        if(alreadyInList) {
-          alreadyInList.toWatch = true;
-        } else {
-          action.payload.toWatch = true;
-          newState.userMovies.push(action.payload)
-        }
-        return newState;
-      }
+      // case MOVIE_ADD_TO_WATCH: {
+      //   const newState = { ...state };
+      //   const alreadyInList = newState.userMovies.find( movie => {
+      //     return movie.id === action.payload.id
+      //   });
+      //   if(alreadyInList) {
+      //     alreadyInList.toWatch = true;
+      //   } else {
+      //     action.payload.toWatch = true;
+      //     newState.userMovies.push(action.payload)
+      //   }
+      //   return newState;
+      // }
       case MOVIE_REMOVE_TO_WATCH: {
         const newState = { ...state };
         newState.userMovies.forEach( movie => {
