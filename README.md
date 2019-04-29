@@ -81,4 +81,4 @@ This application currently uses [The Movie db API](https://developers.themoviedb
 - [ ] remove movie api
 - [ ] css repsonsiveness
 - [ ] Storybook 
-- [ ] repository Fork unlink
+- [X] repository Fork unlink
